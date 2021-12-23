@@ -2,16 +2,16 @@
 
 ## usersテーブル
 
-|Column     |Type  |Options                  |
-|-----------|------|-------------------------|
-|nickname   |string|null: false              |
-|email      |string|null: false, unique: true|
-|password   |string|null: false              |
-|en_family  |string|null: false              |
-|en_first   |string|null: false              |
-|kana_family|string|null: false              |
-|kana_first |string|null: false              |
-|birth      |date  |null: false              |
+|Column            |Type  |Options                  |
+|------------------|------|-------------------------|
+|nickname          |string|null: false              |
+|email             |string|null: false, unique: true|
+|encrypted_password|string|null: false              |
+|en_family         |string|null: false              |
+|en_first          |string|null: false              |
+|kana_family       |string|null: false              |
+|kana_first        |string|null: false              |
+|birth             |date  |null: false              |
 
 ### Association
 
@@ -20,18 +20,17 @@
 
 ## itemsテーブル
 
-|Column  |Type      |Options                       |
-|--------|----------|------------------------------|
-|image   |text      |null: false                   |
-|title   |string    |null: false                   |
-|detail  |text      |null: false                   |
-|category|string    |null: false                   |
-|state   |string    |null: false                   |
-|charge  |string    |null: false                   |
-|area    |string    |null: false                   |
-|term    |string    |null: false                   |
-|price   |integer   |null: false                   |
-|user    |references|null: false, foreign_key: true|
+|Column     |Type      |Options                       |
+|-----------|----------|------------------------------|
+|title      |string    |null: false                   |
+|detail     |text      |null: false                   |
+|category_id|string    |null: false                   |
+|state_id   |integer   |null: false                   |
+|charge_id  |integer   |null: false                   |
+|area_id    |integer   |null: false                   |
+|term_id    |integer   |null: false                   |
+|price      |integer   |null: false                   |
+|user       |references|null: false, foreign_key: true|
 
 ### Association
 
@@ -53,14 +52,15 @@
 
 ## deliveriesテーブル
 
-|Column     |Type   |Options    |
-|-----------|-------|-----------|
-|postal_code|integer|null: false|
-|prefecture |string |null: false|
-|city       |string |null: false|
-|address    |string |null: false|
-|building   |string |           |
-|tel        |integer|null: false|
+|Column     |Type      |Options                       |
+|-----------|----------|------------------------------|
+|postal_code|string    |null: false                   |
+|area_id    |integer   |null: false                   |
+|city       |string    |null: false                   |
+|address    |string    |null: false                   |
+|building   |string    |                              |
+|tel        |string    |null: false                   |
+|history    |references|null: false, foreign_key: true|
 
 ### Association
 
