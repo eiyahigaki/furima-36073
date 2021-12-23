@@ -24,7 +24,7 @@
 |-----------|----------|------------------------------|
 |title      |string    |null: false                   |
 |detail     |text      |null: false                   |
-|category_id|string    |null: false                   |
+|category_id|integer   |null: false                   |
 |state_id   |integer   |null: false                   |
 |charge_id  |integer   |null: false                   |
 |area_id    |integer   |null: false                   |
