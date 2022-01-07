@@ -30,7 +30,7 @@
         <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
         <%# 購入機能を追加したタイミングで要変更。まだ購入されていない場合に「購入ボタン」が表示されるようにする %>
       <% else %>
-        <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
+        <%= link_to "購入画面に進む", item_histories_path(@item.id) ,class:"item-red-btn"%>
       <% end %>
     <% end %>
 
