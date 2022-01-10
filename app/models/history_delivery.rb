@@ -1,6 +1,6 @@
 class HistoryDelivery
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :area_id, :city, :address, :building, :tel
+  attr_accessor :user_id, :item_id, :postal_code, :area_id, :city, :address, :building, :tel, :token, :price
 
   with_options presence: true do
     validates :user_id, :item_id, :city, :address
