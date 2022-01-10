@@ -1,5 +1,6 @@
 class HistoriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :move_to_root
 
 
   def index
@@ -32,5 +33,12 @@ class HistoriesController < ApplicationController
       card: history_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def move_to_root
+    @item = Item.find(params[:item_id])
+    if @item.history.present?
+      redirect_to root_path
+    end
   end
 end
