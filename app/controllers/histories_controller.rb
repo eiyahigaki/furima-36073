@@ -6,7 +6,6 @@ class HistoriesController < ApplicationController
   end
 
   def create
-    binding.pry
     @history_delivery = HistoryDelivery.new(history_params)
     if @history_delivery.valid?
       @history_delivery.save
