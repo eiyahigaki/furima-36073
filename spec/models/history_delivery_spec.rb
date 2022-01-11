@@ -27,12 +27,12 @@ RSpec.describe HistoryDelivery, type: :model do
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
         @history_delivery.postal_code = '1234567'
         @history_delivery.valid?
-        expect(@history_delivery.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@history_delivery.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
       it 'area_idを選択していないと保存できないこと' do
         @history_delivery.area_id = 1
-        @history_delivery.valid?     
-        expect(@history_delivery.errors.full_messages).to include("Area can`t be blank")
+        @history_delivery.valid?
+        expect(@history_delivery.errors.full_messages).to include('Area can`t be blank')
       end
       it 'cityが空だと保存できないこと' do
         @history_delivery.city = ''
@@ -52,7 +52,7 @@ RSpec.describe HistoryDelivery, type: :model do
       it 'telが10桁以上11桁以内の半角数値でないと保存できないこと' do
         @history_delivery.tel = '123'
         @history_delivery.valid?
-        expect(@history_delivery.errors.full_messages).to include("Tel is invalid")
+        expect(@history_delivery.errors.full_messages).to include('Tel is invalid')
       end
       it 'tokenが空だと保存できないこと' do
         @history_delivery.token = ''
