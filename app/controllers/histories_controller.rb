@@ -25,7 +25,7 @@ class HistoriesController < ApplicationController
   end
 
   def move_to_root
-    if @item.history.present? || if current_user.id == @item.user_id
+    if @item.history.present? || current_user.id == @item.user_id
       redirect_to root_path
     end
   end
