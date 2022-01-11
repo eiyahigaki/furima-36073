@@ -1,14 +1,13 @@
 class HistoriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :item_find
   before_action :move_to_root
 
   def index
     @history_delivery = HistoryDelivery.new
-    @item = Item.find(params[:item_id])
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @history_delivery = HistoryDelivery.new(history_params)
     if @history_delivery.valid?
       pay_item
@@ -20,6 +19,14 @@ class HistoriesController < ApplicationController
   end
 
   private
+
+  def item_find
+    @item = Item.find(params[:item_id])
+  end
+
+  def move_to_root
+    redirect_to root_path if @item.history.present?
+  end
 
   def history_params
     params.require(:history_delivery).permit(:postal_code, :area_id, :city, :address, :building, :tel).merge(
@@ -35,9 +42,5 @@ class HistoriesController < ApplicationController
       currency: 'jpy'
     )
   end
-
-  def move_to_root
-    @item = Item.find(params[:item_id])
-    redirect_to root_path if @item.history.present?
-  end
+  
 end
