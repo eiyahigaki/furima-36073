@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    redirect_to action: :index unless @item.history.blank?
   end
 
   def update
