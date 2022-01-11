@@ -54,6 +54,16 @@ RSpec.describe HistoryDelivery, type: :model do
         @history_delivery.valid?
         expect(@history_delivery.errors.full_messages).to include('Tel is invalid')
       end
+      it 'telが12桁以上では購入できない' do
+        @history_delivery.tel = '012345678912'
+        @history_delivery.valid?
+        expect(@history_delivery.errors.full_messages).to include("Tel is invalid")
+      end
+      it 'telに半角数字以外が含まれている場合は購入できない' do
+        @history_delivery.tel = 'あ0123456789'
+        @history_delivery.valid?
+        expect(@history_delivery.errors.full_messages).to include("Tel is invalid")
+      end
       it 'tokenが空だと保存できないこと' do
         @history_delivery.token = ''
         @history_delivery.valid?
