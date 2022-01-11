@@ -1,12 +1,11 @@
 class HistoryDelivery
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :area_id, :city, :address, :building, :tel, :token, :price
+  attr_accessor :user_id, :item_id, :postal_code, :area_id, :city, :address, :building, :tel, :token
 
   with_options presence: true do
     validates :user_id, :item_id, :city, :address, :token
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
     validates :tel, format: { with: /\A[0-9]{10,11}\z/ }
-    # エラーが出る可能性がある。:telはinteger型ではなく、string型にしているため(integer型だと頭数字の0が読み込まれない)
   end
   validates :area_id, numericality: { other_than: 1, message: 'can`t be blank' }
 

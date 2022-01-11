@@ -30,17 +30,16 @@ class HistoriesController < ApplicationController
 
   def history_params
     params.require(:history_delivery).permit(:postal_code, :area_id, :city, :address, :building, :tel).merge(
-      user_id: current_user.id, item_id: params[:item_id], token: params[:token], price: @item.price
-    )
+      user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
-      amount: history_params[:price],
+      amount: @item.price,
       card: history_params[:token],
       currency: 'jpy'
     )
   end
-  
+
 end
